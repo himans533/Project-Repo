@@ -1,30 +1,38 @@
 import org.junit.jupiter.api.Test;
 
+import Rightclick.RewardValue;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 public class RewardValueTests {
 
     @Test
-    void create_with_cash_value() {
-        double cashValue = 100;
-        var rewardValue = new RewardValue(cashValue);
-        assertEquals(cashValue, rewardValue.getCashValue());
+    public void testRewardValueInitialization() {
+        RewardValue reward = new RewardValue(100);
+        assertEquals(100, reward.getValue());
     }
 
     @Test
-    void create_with_miles_value() {
-        int milesValue = 10000;
-        var rewardValue = new RewardValue(milesValue);
-        assertEquals(milesValue, rewardValue.getMilesValue());
+    public void testRewardValueStringRepresentation() {
+        RewardValue reward = new RewardValue(100);
+        assertEquals("Reward value: 100", reward.toString());
     }
 
     @Test
-    void convert_from_cash_to_miles() {
-        assert false;
+    public void testRewardValueAddition() {
+        RewardValue reward1 = new RewardValue(100);
+        RewardValue reward2 = new RewardValue(50);
+        RewardValue result = reward1.add(reward2);
+        assertEquals(150, result.getValue());
     }
 
     @Test
-    void convert_from_miles_to_cash() {
-        assert false;
+    public void testRewardValueMultiplication() {
+        RewardValue reward = new RewardValue(100);
+        RewardValue result = reward.multiply(2);
+        assertEquals(200, result.getValue());
     }
 }
+
