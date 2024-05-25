@@ -19,7 +19,6 @@ public class RewardValue {
     public RewardValue(int value) {
         this.value = value;
     }
-
     public int getValue() {
         return value;
     }
