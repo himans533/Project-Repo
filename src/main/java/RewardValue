@@ -1,35 +1,54 @@
 package Rightclick;
 
 public class RewardValue {
+
+    private int value ;
     private double CashValue;
     private double MilesValue;
     private static final double MILES_TO_CASH_RATE = 0.0035;
 
-    // Constructor to initialize with miles
     public RewardValue(double miles ) {
         this.MilesValue = miles;
         this.CashValue = convertMilesToCash(miles);
     }
 
-
-	// Method to convert miles to cash
     private double convertMilesToCash(double miles) {
         return miles * MILES_TO_CASH_RATE;
     }
 
-    // Getter for miles
+    public RewardValue(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public RewardValue add(RewardValue other) {
+        return new RewardValue(this.value + other.value);
+    }
+
+    public RewardValue multiply(int factor) {
+        return new RewardValue(this.value * factor);
+    }
+
+    @Override
+    public String toString() {
+        return "Reward value: " + value;
+    }
+
+
     public double getMiles() {
         return MilesValue;
     }
 
-    // Getter for cash
     public double getCash() {
         return CashValue;
     }
 
     public static void main(String[] args) {
-        // Example usage
-        RewardValue rewardValue = new RewardValue(1000); // 1000 miles
+
+        RewardValue rewardValue = new RewardValue(1000);
         System.out.println("Miles: " + rewardValue.getMiles());
         System.out.println("Cash: $" + rewardValue.getCash());
     }
